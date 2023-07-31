@@ -1,7 +1,7 @@
 Command_Map:
     type: command
     enabled: true
-    debug: true
+    debug: false
     name: map
     description: Gets some map image data.
     usage: /map (address)
