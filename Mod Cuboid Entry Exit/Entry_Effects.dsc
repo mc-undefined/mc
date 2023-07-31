@@ -28,7 +28,7 @@ Notable_Entry_Effects:
 
 Notable_Entry:
     type: world
-    enabled: true
+    enabled: false
     debug: false
     data:
         dyn:
