@@ -25,3 +25,20 @@ Notable_Entry_Effects:
             - stop
         # - announce ""
         # - announce "<context.entity.name> is exiting: <[name]>"
+
+Notable_Entry:
+    type: world
+    enabled: false
+    debug: false
+    data:
+        dyn:
+        - Some places, when you enter, have special effects and triggers when you enter!
+    events:
+        on entity enters cuboid:
+        - ratelimit <context.entity> 10s
+        - define name <context.area.note_name.if_null[<context.area>]>
+        - announce "<context.entity.name> is entering: <[name].to_sentence_case>"
+        on entity exits cuboid:
+        - ratelimit <context.entity> 10s
+        - define name <context.area.note_name.if_null[<context.area>]>
+        - announce "<context.entity.name> is exiting: <[name].to_sentence_case>"

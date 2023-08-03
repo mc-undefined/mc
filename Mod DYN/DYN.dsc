@@ -59,4 +59,4 @@ ScriptDYN:
 
 DYN_Format:
     type: format
-    format: <&nl><gold><element[].pad_left[24]><&lb><italic><element[Did you know?].rainbow><gold><&rb><&nl><&2><[text]><&nl>
+    format: <gold><&nl><element[].pad_left[24]><&lb><element[Did you know?].rainbow.italicize><&rb><&nl><[text].color[green]><&nl>

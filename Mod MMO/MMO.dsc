@@ -1,7 +1,7 @@
 Skills_Tracker:
     enabled: false
     type: world
-    debug: true
+    debug: false
     data:
         dyn:
         - We are currently working on writing our own MMO plugin!
@@ -45,9 +45,12 @@ Skills_Tracker:
         - flag player mmo.skills.swim
         - flag player mmo.skills.run
         - flag player mmo.skills.acrobatics
+        - flag player mmo.skills.sneak
 
         - flag player mmo.skills.perception
         - flag player mmo.skills.knowledge
+        - flag player mmo.skills.spell_craft
+
 
         - flag player mmo.skills.speak
 
