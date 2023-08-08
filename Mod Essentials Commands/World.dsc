@@ -13,7 +13,8 @@ Command_World:
     - define world <world[<context.args.get[1]>]||null>
     - choose <[world]>:
         - case null:
-            - narrate "<gray>Options are: <blue><server.worlds.formatted>" format:notice
+            - narrate "<gray>Your world: <player.location.world.name.color[blue]> " format:notice
+            - narrate "<gray>Options are: <blue><server.worlds.formatted>" format:center
             - stop
         - default:
             - narrate "Teleporting to: <red><[world]>" format:notice
