@@ -7,9 +7,7 @@ Chunk_Generation_Notification:
         - The server will notify everyone when new chunks are generating. Check the action bar for updates.
         delay: 10s
     events:
-        after chunk loads for the first time:
-            priority:
-                1:
+        on chunk loads for the first time priority:1:
                 - ratelimit server <script.data_key[data.delay]>
                 - define rate <server.flag[number_of_new_chunks_generated]>
                 - flag server number_of_new_chunks_generated:0
