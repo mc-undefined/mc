@@ -1,7 +1,11 @@
 Dynmap_Updates:
     type: world
     enabled: false
+<<<<<<< HEAD
     debug: true
+=======
+    debug: false
+>>>>>>> be6b69268b26a18291f70e315069cafe19d5a480
     data:
         dyn:
         - We try to highlight all villages, dungeons, and special areas in dynmap.
@@ -23,6 +27,10 @@ Dynmap_Updates:
 Dynmap_Add_Notable:
     type: task
     definitions: notable
+<<<<<<< HEAD
+=======
+    enabled: false
+>>>>>>> be6b69268b26a18291f70e315069cafe19d5a480
     data:
         dyn:
         - An admin created a script to autoconvert all notable locations into areas in Dynmap. He failed.
@@ -62,8 +70,13 @@ Dynmap_Add_Notable:
 
 Dynmap_Add_All_Notables:
     type: task
+<<<<<<< HEAD
     enabled: true
     debug: true
+=======
+    enabled: false
+    debug: false
+>>>>>>> be6b69268b26a18291f70e315069cafe19d5a480
     script:
     - foreach <util.notes[cuboids]>:
         - wait 1s
@@ -72,7 +85,11 @@ Dynmap_Add_All_Notables:
 Dmarkers_list:
     # Convert icons into notable locations
     type: task
+<<<<<<< HEAD
     debug: true
+=======
+    enabled: false
+>>>>>>> be6b69268b26a18291f70e315069cafe19d5a480
     script:
     - execute as_server "dmarker list" save:markers
     - define markers <entry[markers].output>

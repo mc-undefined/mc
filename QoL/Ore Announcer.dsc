@@ -4,7 +4,7 @@ Ore_Announcer:
     debug: false
     data:
         dyn:
-        - <script.name.color[blue]>: Now you'll know when to raid a player for thier ores! They cant hide what they found now!
+        - Now you'll know when to raid a player for thier ores! They cant hide what they found now!
         delay: 30s
         tag_id: announce_on_damage
         search_radius: 10
