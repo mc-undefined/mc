@@ -1,2 +1,4 @@
 Mod Mob Control/Spawn Controller.dsc
 Server Performance/Auto Restart.dsc
+Server Performance/no_quick_join.dsc
+Server Performance/simple_autosave.dsc

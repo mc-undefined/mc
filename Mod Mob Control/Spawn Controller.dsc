@@ -60,4 +60,4 @@ MobSpawnSuppression:
             - stop
         - if <server.flag[spawn_reasons_denied].contains[<context.reason>]>:
             - determine cancelled
-        - announce "[<context.reason>] spawns: <context.entity.name>"
+        - announce "[<context.reason>] spawns: <context.entity.name>" if:<script.data_key[debug]> format:debugprefix

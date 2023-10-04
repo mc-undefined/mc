@@ -92,11 +92,11 @@ Ore_Announcer:
                 from: red
                 to: gold
     events:
-        after reload scripts:
-        - announce "<script.name.color[blue]>: Tracking <script.data_key[data.blocks].size.color[blue]> blocks" to_ops
-        - announce "<script.name.color[blue]>: You'll need to restart the server to add new blocks to the announce list." to_ops
-        - foreach <script.data_key[data.blocks]>:
-            - adjust <material[<[value]>]> vanilla_tags:<material[<[value]>].vanilla_tags.include[<script.data_key[data.tag_id]>].deduplicate>
+        #after reload scripts:
+        #- announce "<script.name.color[blue]>: Tracking <script.data_key[data.blocks].size.color[blue]> blocks" to_ops
+        #- announce "<script.name.color[blue]>: You'll need to restart the server to add new blocks to the announce list." to_ops
+        #- foreach <script.data_key[data.blocks]>:
+        #    - adjust <material[<[value]>]> vanilla_tags:<material[<[value]>].vanilla_tags.include[<script.data_key[data.tag_id]>].deduplicate>
         on server start:
         - announce "<script.name.color[blue]>: Tracking <script.data_key[data.blocks].size.color[blue]> blocks"
         - foreach <script.data_key[data.blocks]>:
