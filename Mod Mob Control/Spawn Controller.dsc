@@ -1,6 +1,6 @@
 MobSpawnSuppression:
     type: world
-    enabled: true
+    enabled: false
     debug: false
     data:
         # spawn reasons
