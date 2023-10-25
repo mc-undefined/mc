@@ -41,5 +41,6 @@ Narrate_ServerStats:
     - narrate "<blue>Ram Allocated: <reset><util.ram_allocated.div[1074000].format_number[00.0]> <blue>MB"
     - narrate "<blue>Ram Usage: <reset><util.ram_usage.div[1074000].format_number[00.0]> <blue>MB"
     - narrate "<blue>Ram Free: <reset><util.ram_free.div[1074000].format_number[00.0]> <blue>MB"
+    - narrate "<blue>Paper Tick Time: <reset><paper.tick_times>"
     - narrate "<blue>Server TPS: <reset><server.recent_tps.parse_tag[<[parse_value].format_number[00.0]>]>"
     - narrate "<blue>Your <yellow>Ping<blue>: <red><player.ping>"
