@@ -1,6 +1,6 @@
 hellofoxed:
     type: world
-    debug: true
+    debug: false
     data:
         dyn:
         - alt_foxed write scripts
