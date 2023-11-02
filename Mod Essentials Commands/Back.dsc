@@ -18,7 +18,7 @@ Back_Command:
 
 Record_Entity_Teleports:
     type: world
-    debug: true
+    debug: false
     enabled: true
     data:
         dyn:

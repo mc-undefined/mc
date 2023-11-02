@@ -1,7 +1,7 @@
 #Chat channel handling for the server.
 Chat_Channel_Broadcast:
     type: world
-    debug: true
+    debug: false
     enabled: true
     data:
         dyn:

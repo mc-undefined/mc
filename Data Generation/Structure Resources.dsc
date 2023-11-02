@@ -1,6 +1,6 @@
 Record_World_Structures:
     type: world
-    debug: true
+    debug: false
     enabled: true
     data:
         notable_types:
@@ -14,7 +14,7 @@ Record_World_Structures:
 
 Get_Structures:
     type: procedure
-    debug: true
+    debug: false
     definitions: location|distance
     script:
     - define distance <[distance]||0>
@@ -71,7 +71,7 @@ Notable_Point_Converter:
 
 Record_Structure:
     type: task
-    debug: true
+    debug: false
     enabled: true
     #definitions: structure[A structure dict from Get_Structure task]
     script:
@@ -88,7 +88,7 @@ Record_Structure:
 
 Record_gotten_structures:
     type: task
-    debug: true
+    debug: false
     enabled: true
     data:
         dyn:

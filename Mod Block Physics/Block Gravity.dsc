@@ -1,7 +1,7 @@
 Landslide:
     enabled: true
     type: world
-    debug: true
+    debug: false
     data:
         dyn:
         - Blocks that fall now slide!
