@@ -28,6 +28,6 @@ SetSpawn_Command:
         dyn:
         - ./setspawn to set spawn
     script:
-    - run addremove_noted_cuboid def:remove|<empty>|<cuboid[spawn]>
+    - run addremove_noted_cuboid def:remove|<empty>|<cuboid[<player.location.world.name>_spawn]>
     - run addremove_noted_cuboid def:add|<player.location.chunk.cuboid>|spawn
     - adjust <player.location.world> spawn_location:<player.location>
