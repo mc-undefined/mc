@@ -1,6 +1,6 @@
 on_chem_join_hello_world:
     type: world
-    debug: true
+    debug: false
     data:
         dyn:
         - chem has a huge brain
