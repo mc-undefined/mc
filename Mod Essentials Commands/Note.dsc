@@ -17,7 +17,7 @@ Command_Notable:
 
 AddRemove_Noted_Cuboid:
     type: task
-    debug: true
+    debug: false
     enabled: true
     definitions: function[Add, Remove, Modify]|cub3[A DCuboid]|name[Unique name, Existing notable]
     script:

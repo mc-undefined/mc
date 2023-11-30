@@ -1,6 +1,6 @@
 Surprise_loot:
     type: world
-    debug: true
+    debug: false
     data:
         dyn:
         - Loot stash at x coords

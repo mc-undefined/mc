@@ -99,10 +99,14 @@ Ore_Announcer:
         #    - adjust <material[<[value]>]> vanilla_tags:<material[<[value]>].vanilla_tags.include[<script.data_key[data.tag_id]>].deduplicate>
         on server start:
         - announce "<script.name.color[blue]>: Tracking <script.data_key[data.blocks].size.color[blue]> blocks"
+        - flag server found_ores:!
         - foreach <script.data_key[data.blocks]>:
             - adjust <material[<[value]>]> vanilla_tags:<material[<[value]>].vanilla_tags.include[<script.data_key[data.tag_id]>].deduplicate>
         after player damages block:
-        - ratelimit <player> <script.data_key[data.delay]>
-        - if <context.material.vanilla_tags.contains[<script.data_key[data.tag_id]>]>:
-            - define num <context.location.flood_fill[<script.data_key[data.search_radius]>].size>
-            - announce "<player.name.color[blue]> <element[has found <[num].color[gold]> <context.material.name>].color_gradient[from=<script.data_key[data.color.<context.material.name>.from].parsed>;to=<script.data_key[data.color.<context.material.name>.to].parsed>]>!"
+        - stop if:<context.material.vanilla_tags.contains[<script.data_key[data.tag_id]>].not>
+        - stop if:<server.has_flag[found_ores.<context.location>]>
+        - define blocks <context.location.flood_fill[<script.data_key[data.search_radius]>]>
+        - define num <[blocks].size>
+        - foreach <[blocks]>:
+            - flag server found_ores.<[value]> expire:1h
+        - announce "<player.name.color[blue]> <element[has found <[num].color[gold]> <context.material.name>].color_gradient[from=<script.data_key[data.color.<context.material.name>.from].parsed>;to=<script.data_key[data.color.<context.material.name>.to].parsed>]>!"
