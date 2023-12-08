@@ -13,7 +13,7 @@ On_Player_Tab_Performance_Data:
         - announce "[<script.name.color[blue]>] Usage of this command requires denizen config setting [allow_restricted_settings:true]"
         after player joins:
         - tablist add uuid:<server.flag[server_tps_display_uuid]> name:<server.recent_tps.parse_tag[<[parse_value].round_down_to_precision[1]>]>
-        - while <player.exists>:
+        - while <player.if_null[false]>:
             #- narrate "tab item updated"
             - tablist update uuid:<server.flag[server_tps_display_uuid]> display:<server.recent_tps.parse_tag[<[parse_value].round_down_to_precision[1]>]>
             - wait 2s
