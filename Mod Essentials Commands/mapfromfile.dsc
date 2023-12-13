@@ -4,7 +4,7 @@ Command_Map:
     debug: false
     name: map
     description: Gets some map image data.
-    usage: /map (address)
+    usage: /map (file_location)
     tab complete:
     - determine <util.list_files[/images].include[<util.list_files[/images/downloaded/]>]>
     script:
