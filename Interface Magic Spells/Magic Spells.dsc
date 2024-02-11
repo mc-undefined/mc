@@ -7,4 +7,4 @@ __MagicSpells_Interface__:
     events:
         after cast command:
         - define text "<player.name.color[blue]> Casts: <context.args.get[1].color_gradient[from=gray;to=red]>"
-        - toast <[text]> icon:ender_crystal frame:goal targets:<player.location.find_players_within[30]>
+        - toast <[text]> icon:end_crystal frame:goal targets:<player.location.find_players_within[30]>
