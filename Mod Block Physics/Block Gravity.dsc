@@ -78,6 +78,7 @@ Slide_Queue_Consumer:
 
 SlideOptions:
     type: procedure
+    debug: false
     definitions: location[Starting Location]
     script:
     #Early exit because should fall strait down first
@@ -107,6 +108,7 @@ SlideBlock:
 
 GetAdjacentLocations:
     type: procedure
+    debug: false
     definitions: location[origin point]
     script:
     - define locations <list>

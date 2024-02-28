@@ -1,6 +1,6 @@
 Learning_I_think:
     type: world
-    debug: true
+    debug: false
     data:
         dyn:
         - There is NOT A <&sq>HIPPO<&sq> in the world.

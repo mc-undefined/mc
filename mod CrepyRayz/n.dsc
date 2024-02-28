@@ -1,6 +1,6 @@
 helloCrepyRayz:
     type: world
-    debug: true
+    debug: false
     data:
         dyn:
         - crepy writes script
