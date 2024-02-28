@@ -68,8 +68,9 @@ Command_Book_Get:
     # Deliver Books
     - foreach <[pages].sub_lists[100]> as:volume:
         - define book_item <item[written_book]>
+        - define new_title <[loop_index]>-<[num_books]><&sp><[title]>
         - adjust def:book_item book_author:<[author]>
-        - adjust def:book_item book_title:<[title]><&sp><[loop_index]>-<[num_books]>
+        - adjust def:book_item book_title:<[new_title].substring[1,16]>
         - adjust def:book_item book_pages:<[volume]>
         - give <[book_item]>
 
