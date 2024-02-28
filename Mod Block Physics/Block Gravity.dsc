@@ -78,6 +78,7 @@ Slide_Queue_Consumer:
 
 SlideOptions:
     type: procedure
+    enabled: true
     debug: false
     definitions: location[Starting Location]
     script:
