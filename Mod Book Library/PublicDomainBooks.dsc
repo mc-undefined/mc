@@ -42,7 +42,7 @@ Command_Book_Get:
         - ~webget <[web]> savefile:plugins\Denizen\<[file_name]> save:web
         - choose <entry[web].status>:
             - case 200:
-                - narrate "Retrieved successful webpage."
+                - narrate "Webget successful."
             - default:
                 - narrate "<red>The webpage had an error:"
                 - narrate Result:<&sp><entry[web].result>
@@ -61,9 +61,9 @@ Command_Book_Get:
         - define pages:->:<[page].space_separated>
 
     # Public Declaration of num books and num shelves.
-    - define num_books <[pages].size.div[100]>
+    - define num_books <[pages].size.div[100].round_up>
     - announce "<blue><player.name.color[gold]> recieved id:<[id].color[gold]> title: <[title].color[gold]> by: <[author].color[gold]> in <[num_books].round.color[gold]> volumes!"
-    - announce "Expecting <[num_books].div[6].add[1].round.color[yellow]> book shelves!"
+    - announce "Expecting <[num_books].div[6].round_up.color[yellow]> book shelves!"
 
     # Deliver Books
     - foreach <[pages].sub_lists[100]> as:volume:
