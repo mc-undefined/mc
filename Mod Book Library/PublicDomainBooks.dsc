@@ -1,7 +1,7 @@
 Command_Book_Get:
     type: command
     enabled: true
-    debug: true
+    debug: false
     name: getbook
     description: Gets a book using an id.
     usage: /getbook (book_id) (Book Title) (Author)
