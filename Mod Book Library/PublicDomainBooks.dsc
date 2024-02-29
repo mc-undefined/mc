@@ -3,20 +3,22 @@ Command_Book_Get:
     enabled: true
     debug: false
     name: getbook
-    description: Gets a book using an id.
+    description: Gets a book using an id. https://www.gutenberg.org for Search and Id's
     usage: /getbook (book_id) (Book Title) (Author)
     tab completions:
         1: <server.flag[library.books].keys>
-        2: <server.flag[library.books].parse_value[get[author]].values>
-        3: <server.flag[library.books].parse_value[get[title]].values>
+        2: Author
+        3: Title
+        #<server.flag[library.books].parse_value[get[title]].values>
     script:
     # Arg handling
     - define id <context.args.get[1]||null>
     - define author <context.args.get[2]||null>
     - define title <context.args.get[3]||null>
-    - if <[id]> == 'null' || <[author]> == 'null' || <[title]> == 'null':
+    - if <[id]> == null || <[author]> == null || <[title]> == null:
         - narrate "<red>Your arguments contains a failed entry. Args: <context.args.space_separated.color[blue]>"
         - narrate "<yellow>All arguments are needed."
+        - narrate <yellow><script.data_key[usage]>
         - stop
 
     # Hardcoded Definitions using arguments.
@@ -52,7 +54,7 @@ Command_Book_Get:
                 - narrate Status:<&sp><entry[web].status>
                 - stop
 
-    # Read and parse file data.
+    # Read, trim, split file data.
     - ~fileread path:<[file_name]> save:data
     - define data <entry[data].data.utf8_decode>
     - define text <[data].trim_to_character_set[<[char_set]>].replace_text[<&chr[000D]>].with[<&nl>]>
@@ -73,83 +75,3 @@ Command_Book_Get:
         - adjust def:book_item book_title:<[new_title].substring[1,16]>
         - adjust def:book_item book_pages:<[volume]>
         - give <[book_item]>
-
-
-Parse_WebBook_Data:
-    type: procedure
-    debug: false
-    definitions: text
-    script:
-    - define title "No Title"
-    - define set_title false
-    - define author "No Author"
-    - define set_author false
-    - define page_being_written <empty>
-    - define pages <list>
-    - define page_characters 0
-    - define page_characters_max 789
-    - define line_width_max 114
-    - define page_lines 0
-    - define page_lines_max 14
-    - define author_characters_max 16
-    - define title_characters_max 13
-    - define char_set abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890<&sp><&co>.?!
-    - define text <[text].trim_to_character_set[<[char_set]>]>
-    - define lines <[text].split_lines_by_width[<[line_width_max]>]>
-    #- debug "Number of lines in text: <[lines].size>" type:debug
-    #- define text <[text].replace_text[<&chr[000D]>].with[<empty>]>
-    # This is volume Se
-    - foreach <[lines]> as:line:
-        - if <[page_characters].is[more].than[<[page_characters_max]>]>||<[page_lines].is[more].than[<[page_lines_max]>]>:
-            - define pages:->:<[page_being_written]>
-            - define page_being_written <empty>
-            - define page_characters:0
-            - define page_lines:0
-        - define page_characters:+:<[line].length>
-        - define page_lines:++
-        - define page_being_written "<[page_being_written]><&nl><[line]>"
-        # Author and Title Scanning Section. Once Set skips the rest of the matching conditions.
-        - choose <[line].split.get[1]>:
-            - case "Author:":
-               # Sets max Character Length for Author.
-                - define author <[line].split.get[2].to[last].space_separated.split[<empty>].get[1].to[<[author_characters_max]>]> if:<[set_author].not>
-                - define set_author true
-            - case "Title:":
-               # Sets max Character Length for Title. -3 to allow book volume number inclusion.
-                - define title <[line].split.get[2].to[last].space_separated.split[<empty>].get[1].to[<[title_characters_max]>]> if:<[set_title].not>
-                - define set_title true
-            - default:
-                - foreach next
-    - determine <map[title=<[title]>;author=<[author]>;pages=<[pages]>]>
-
-test_webget:
-    type: command
-    enabled: true
-    debug: true
-    name: d-book
-    description: Gets a book using an id.
-    usage: /d-book (book_id)
-    script:
-    - define id <context.args.get[1]>
-    - define web http://aleph.gutenberg.org/cache/epub/<[id]>/pg<[id]>.txt
-    - ~webget <[web]> save:book
-    - announce Result:<&sp><entry[book].result>
-    - announce Failed:<&sp><entry[book].failed>
-    - announce Headers:<&sp><entry[book].headers>
-    - announce Time_ran:<&sp><entry[book].time_ran>
-    - announce Status:<&sp><entry[book].status>
-
-book_write:
-    type: command
-    enabled: true
-    debug: true
-    name: w-book
-    description: writes a book
-    usage: /w-book
-    script:
-    - define text new|list
-    - define book <item[written_book]>
-    - adjust def:book book_pages:<[text]>
-    - adjust def:book book_author:Newton
-    - adjust def:book book_title:5_Law_of_thermos
-    - give <[book]>
